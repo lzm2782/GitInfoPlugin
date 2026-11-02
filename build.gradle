@@ -1,0 +1,49 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    withSourcesJar() // 发布源码包，方便消费方 IDE 跳转
+}
+
+dependencies {
+    implementation gradleApi()
+}
+
+gradlePlugin {
+    plugins {
+        gitInfo {
+            id = 'com.hushan.gitinfo'
+            implementationClass = 'com.hushan.gitinfoplugin.GitInfoPlugin'
+            displayName = 'GitInfoPlugin'
+            description = '编译时自动抓取 Git 分支/提交/打包人/versionName 写入 assets/git_info.json'
+        }
+    }
+}
+
+// ---- Maven 发布 ----
+group = 'com.hushan'
+version = '1.0.0'
+
+publishing {
+    // java-gradle-plugin 会自动创建 pluginMaven publication 和 marker
+    // 这里只需要配置仓库，sourcesJar 已由 java.withSourcesJar() 自动包含
+    repositories {
+        // 1) 本地 Maven 仓库（默认 ~/.m2/repository）
+        mavenLocal()
+
+        // 2) 远程仓库（按需开启，凭证放在 ~/.gradle/gradle.properties 或环境变量）
+        // maven {
+        //     def releasesRepoUrl = uri('https://your-nexus.example.com/repository/maven-releases/')
+        //     def snapshotsRepoUrl = uri('https://your-nexus.example.com/repository/maven-snapshots/')
+        //     url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        //     credentials {
+        //         username = project.findProperty("maven.username") ?: System.getenv("MAVEN_USERNAME")
+        //         password = project.findProperty("maven.password") ?: System.getenv("MAVEN_PASSWORD")
+        //     }
+        // }
+    }
+}
