@@ -2,3 +2,4 @@
 /bin
 /.gradle
 *.iml
+local.properties
