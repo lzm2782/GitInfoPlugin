@@ -25,7 +25,8 @@ gradlePlugin {
 }
 
 // ---- Maven 发布 ----
-group = 'com.hushan'
+// JitPack 标准坐标：com.github.1002391493:GitInfoPlugin:v1.0.0
+group = 'com.github.1002391493'
 version = '1.0.0'
 
 publishing {
