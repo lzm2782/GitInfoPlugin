@@ -3,3 +3,7 @@
 /.gradle
 *.iml
 local.properties
+.idea/
+.vscode/
+debug.log
+*.log
