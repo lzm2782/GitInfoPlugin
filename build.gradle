@@ -16,7 +16,7 @@ dependencies {
 gradlePlugin {
     plugins {
         gitInfo {
-            id = 'com.hushan.gitinfo'
+            id = 'gitinfo'
             implementationClass = 'com.hushan.gitinfoplugin.GitInfoPlugin'
             displayName = 'GitInfoPlugin'
             description = '编译时自动抓取 Git 分支/提交/打包人/versionName 写入 assets/git_info.json'
@@ -25,9 +25,9 @@ gradlePlugin {
 }
 
 // ---- Maven 发布 ----
-// JitPack 标准坐标：com.github.lzm2782:GitInfoPlugin:v1.0.3
+// JitPack 标准坐标：com.github.lzm2782:GitInfoPlugin:v1.0.4
 group = 'com.github.lzm2782'
-version = '1.0.3'
+version = '1.0.4'
 
 publishing {
     // java-gradle-plugin 会自动创建 pluginMaven publication 和 marker
